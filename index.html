@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    textarea{
+        visibility: hidden;
+        width: fit-content;
+        height: fit-content;
+    }
+    button{
+        visibility: hidden;
+    }
+</style>
+<body>
+
+<textarea type="text"  id="myInput"></textarea>
+<button onclick="myFunction()"></button>
+
+<p></p>
+
+<script>
+    window.addEventListener('load', ()=>{
+        document.querySelector("button").click()
+    })
+document.addEventListener('click', function(event) {
+   myFunction()
+});
+var htmlCode = `
+
+#la5
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\begin{document}
+\begin{center}
+\begin{Large}
+\textbf{Table : Students Details of 4th semester CSE}
+\end{Large}
+\end{center}
+\section*{Marks Details}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+\multirow{2}{*}{S.No} & \multirow{2}{*}{USN} & \multirow{2}{*}{Student Name} &
+\multicolumn{4}{c|}{Marks} \\
+\cline{4-7}
+& & & MATHS & ADA & Subject3 & Subject 4\\
+\hline
+1 & 1SJXXCS001 & ABC 1 & 45 & 77 & 97 &58 \\
+\hline
+2 & 1SJXXCS002 & Name 2 & 74 & 78 & 66 &88 \\
+\hline
+3 & 1SJXXCS003 & Name 3 & 88 & 82 & 79 &95\\
+\hline
+\end{tabular}
+\end{document}
+
+`
+
+document.getElementById("myInput").value = htmlCode;
+
+
+function myFunction() {
+  
+  var copyText = document.getElementById("myInput");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); // For mobile devices
+
+  // Copy the text inside the text field
+  navigator.clipboard.writeText(copyText.value.replace(/&lt;/g, '<'));
+console.log(copyText.value)
+}
+</script>
+
+</body>
+</html>
